@@ -7,23 +7,48 @@
 
 import UIKit
 
-class LPMainViewController: UIViewController {
-
+class LPMainViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var txtPassword: UITextField!
+    
+    @IBOutlet weak var btnShowPassword: UIButton!
+    
+    @IBOutlet weak var btnLogin: UIButton!
+    
+    @IBOutlet weak var btnCreateUser: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        btnLogin.layer.cornerRadius = btnLogin.frame.size.height / 4
+        
+        btnCreateUser.layer.cornerRadius = btnCreateUser.frame.size.height / 4
+        
+        txtPassword.delegate = self
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func touchShowButton(_ sender: Any) {
+        
+        if txtPassword.isSecureTextEntry {
+            
+            // never toggle twice
+            btnShowPassword.setTitle("Show", for: .normal)
+            
+        } else {
+            btnShowPassword.setTitle("Hide", for: .normal)
+        }
+        
+        txtPassword.isSecureTextEntry.toggle()
     }
-    */
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
 
 }
