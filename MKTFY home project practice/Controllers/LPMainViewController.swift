@@ -22,9 +22,9 @@ class LPMainViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
         
-        btnLogin.layer.cornerRadius = btnLogin.frame.size.height / 4
+        btnLogin.layer.cornerRadius = btnLogin.frame.size.height / 2
         
-        btnCreateUser.layer.cornerRadius = btnCreateUser.frame.size.height / 4
+        btnCreateUser.layer.cornerRadius = btnCreateUser.frame.size.height / 2
         
         txtPassword.delegate = self
     }
